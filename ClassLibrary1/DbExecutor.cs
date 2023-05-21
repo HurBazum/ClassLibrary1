@@ -97,5 +97,32 @@ namespace ClassLibrary1
 
             return cmd.ExecuteNonQuery();
         }
+
+        public int ExecProcedureUpdating(string newValue, string checkValue)
+        {
+            SqlCommand cmd = new()
+            {
+                CommandType = CommandType.StoredProcedure,
+                CommandText = "UpdatingUserByLoginProc",
+                Connection = connector.GetConnection()
+            };
+
+            cmd.Parameters.Add(new SqlParameter("@Name", newValue));
+            cmd.Parameters.Add(new SqlParameter("@Login", checkValue));
+
+            return cmd.ExecuteNonQuery();
+        }
+
+        public int CountRows(string table)
+        {
+            SqlCommand cmd = new()
+            {
+                CommandType = CommandType.Text,
+                CommandText = $"select count(*) from {table}",
+                Connection = connector.GetConnection()
+            };
+
+            return (int)cmd.ExecuteScalar();
+        }
     }
 }

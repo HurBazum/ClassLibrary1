@@ -8,7 +8,8 @@ namespace ConsoleApp1
         show,
         update,
         delete,
-        insert
+        insert,
+        update_or_insert
     };
     class Program
     {
@@ -38,6 +39,10 @@ namespace ConsoleApp1
 
                     case nameof(Cmds.insert):
                         manager.AddUser();
+                        break;
+
+                    case nameof(Cmds.update_or_insert):
+                        manager.UpdateUserProcByLogin();
                         break;
 
                     case nameof(Cmds.stop):
