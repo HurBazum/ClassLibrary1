@@ -121,17 +121,17 @@ namespace ConsoleApp1.View
         public void UpdateUserProcByLogin()
         {
             int rows = executor.CountRows(userTable.Name);
-            Console.WriteLine($"rows = {rows}");
-            int tableRows = rows;
+
             Console.WriteLine("Обновим имя пользователя по логину!");
             Console.Write("Введите логин: ");
             string login = Console.ReadLine();
             Console.Write("Введите новое имя: ");
             string name = Console.ReadLine();
+
             executor.ExecProcedureUpdating(name, login);
-            if (tableRows == executor.CountRows(userTable.Name))
+
+            if (rows == executor.CountRows(userTable.Name))
             {
-                Console.WriteLine(rows);
                 Console.WriteLine("Была изменена строка!");
             }
             else

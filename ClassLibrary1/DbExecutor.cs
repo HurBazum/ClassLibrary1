@@ -98,6 +98,13 @@ namespace ClassLibrary1
             return cmd.ExecuteNonQuery();
         }
 
+        /// <summary>
+        /// если логин существует - обновляет данные в строке
+        /// иначе добавляет новую строку в БД
+        /// </summary>
+        /// <param name="newValue">новое имя</param>
+        /// <param name="checkValue">логин</param>
+        /// <returns></returns>
         public int ExecProcedureUpdating(string newValue, string checkValue)
         {
             SqlCommand cmd = new()
@@ -112,7 +119,11 @@ namespace ClassLibrary1
 
             return cmd.ExecuteNonQuery();
         }
-
+        /// <summary>
+        /// считает строки, нужно для вывода верного сообщения в Manager.UpdateUserProcByLogin()
+        /// </summary>
+        /// <param name="table"></param>
+        /// <returns></returns>
         public int CountRows(string table)
         {
             SqlCommand cmd = new()
